@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/rest")
 public class BlogReceiver {
+    private Blog tmpBlog;
+
     @RequestMapping(value = "/postBlog", method = RequestMethod.POST)
     public Boolean PostBlog(@RequestBody Blog blog)
     {
@@ -15,15 +17,24 @@ public class BlogReceiver {
         System.out.printf(blog.getBlogHtml());
         System.out.printf(blog.getBlogMd());
         System.out.printf(blog.getId());
-        // 永久保存此博客
-
+        // TODO: 永久保存此博客至数据库，我认为Id可以作为key
+        // 目前我就暂存一下，应付一下目前的调试
+        this.tmpBlog = blog;
 
         return Boolean.TRUE;
     };
 
-    @RequestMapping(value = "/getBlog", method = RequestMethod.POST)
-    public String GetBlog(@RequestBody Blog blogId)
+    @RequestMapping(value = "/getBlogHtml", method = RequestMethod.POST)
+    public String GetBlogHtml(@RequestBody String blogId)
     {
-        return "";
+        // TODO: 根据传来的Id,去数据库里查找对应的博客，下面的方法也是一样,我就不写注释了
+        // 目前我就暂时用这个暂存的来应付测试
+        return this.tmpBlog.getBlogHtml();
+    }
+
+    @RequestMapping(value = "/getBlogMd", method = RequestMethod.POST)
+    public String GetBlogMd(@RequestBody String blogId)
+    {
+        return this.tmpBlog.getBlogMd();
     }
 }
