@@ -14,9 +14,16 @@ public class BlogReceiver {
         System.out.printf(blog.getTitle());
         System.out.printf(blog.getBlogHtml());
         System.out.printf(blog.getBlogMd());
+        System.out.printf(blog.getId());
         // 永久保存此博客
 
 
         return Boolean.TRUE;
+    };
+
+    @RequestMapping(value = "/getBlog", method = RequestMethod.POST)
+    public String GetBlog(@RequestBody Blog blogId)
+    {
+        return "";
     }
 }

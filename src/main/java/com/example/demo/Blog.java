@@ -11,6 +11,8 @@ public class Blog {
     private String blogMd;
     // html格式的存储，先用string吧（用于显示博文
     private String blogHtml;
+    // ID (前端用username+timestamp生成的
+    private String id;
 
     public String getBlogHtml() {
         return blogHtml;
@@ -34,5 +36,13 @@ public class Blog {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
