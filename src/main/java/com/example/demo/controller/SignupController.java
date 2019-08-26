@@ -24,8 +24,8 @@ public class SignupController {
             return false;
         }
         else {
-            Encryption e1 = new Encryption();
-            signUp.setPassword(e1.encrypt(signUp.getPassword()));
+            //Encryption e1 = new Encryption();
+            signUp.setPassword(signUp.getPassword());//e1.encrypt(signUp.getPassword()));
             mongoTemplate.save(signUp);
         /*System.out.printf("用户名" + Signupuser.getUserName());
         System.out.printf("用户密码" + Signupuser.getPassword());

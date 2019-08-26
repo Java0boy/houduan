@@ -18,7 +18,7 @@ public class LoginController {
     private MongoTemplate mongoTemplate;
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String Login(@RequestBody User user) {
-        Encryption e2=new Encryption();
+        //Encryption e2=new Encryption();
         Query query = new Query(Criteria.where("userName").regex(user.getUserName()));
         SignUp signUp = mongoTemplate.findOne(query, SignUp.class);
         if(signUp==null){
@@ -26,7 +26,7 @@ public class LoginController {
             return "11111111111";//用户名不存在
         }
         else{
-            signUp.setPassword(e2.decrypt(signUp.getPassword()));
+            //signUp.setPassword(e2.decrypt(signUp.getPassword()));
             //System.out.println(signUp.getPassword());
           //  System.out.println(user.getPassword());
             if (signUp.getPassword().equals(user.getPassword())) {
