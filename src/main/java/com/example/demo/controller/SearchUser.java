@@ -50,4 +50,18 @@ public class SearchUser {
         }
 
     }
+
+    @RequestMapping(value = "/searchUser", method = RequestMethod.POST)
+    public List<SignUp> getUserList(@RequestBody User _user) {
+        //Encryption e2 = new Encryption();
+        Query query = new Query(Criteria.where("userName").regex(_user.getUserName()));
+        List<SignUp> signUp = mongoTemplate.find(query, SignUp.class);
+        if (signUp == null) {
+            return null;
+        }
+        else{
+            return signUp;
+        }
+
+    }
 }
