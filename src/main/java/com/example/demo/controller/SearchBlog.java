@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/rest")
 public class SearchBlog {
@@ -30,16 +32,17 @@ public class SearchBlog {
             return blog.getBlogHtml();
     }
     @RequestMapping(value = "/getBlogByUser", method = RequestMethod.POST)
-    public Blog GetBlogHtml(@RequestBody User _user)
+    public List<Blog> GetBlogHtml(@RequestBody User _user)
     {
         // 根据传来的Id,去数据库里查找对应的博客，下面的方法也是一样,我就不写注释了
         Query query = new Query(Criteria.where("username").regex(_user.getUserName()));
-        Blog blog = mongoTemplate.findOne(query,Blog.class);
+        List<Blog> blog = mongoTemplate.find(query,Blog.class);
         if(blog==null){
             return null;
         }
-        else
+        else {
             return blog;
+        }
     }
 
     @RequestMapping(value = "/getBlogMd", method = RequestMethod.POST)
