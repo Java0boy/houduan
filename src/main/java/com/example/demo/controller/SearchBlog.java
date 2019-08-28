@@ -19,6 +19,16 @@ public class SearchBlog {
     @Autowired
     private MongoTemplate mongoTemplate;
 
+
+    @RequestMapping(value = "/getBlog", method = RequestMethod.POST)
+    public Blog GetBlog(@RequestBody Blog _blog)
+    {
+        // 根据传来的Id,去数据库里查找对应的博客，下面的方法也是一样,我就不写注释了
+        Query query = new Query(Criteria.where("_id").is(_blog.getId()));
+        Blog blog = mongoTemplate.findOne(query,Blog.class);
+        return blog;
+    }
+
     @RequestMapping(value = "/getBlogHtml", method = RequestMethod.POST)
     public String GetBlogHtml(@RequestBody Blog _blog)
     {
@@ -32,7 +42,7 @@ public class SearchBlog {
             return blog.getBlogHtml();
     }
     @RequestMapping(value = "/getBlogByUser", method = RequestMethod.POST)
-    public List<Blog> GetBlogHtml(@RequestBody User _user)
+    public List<Blog> GetBlogByUser(@RequestBody User _user)
     {
         // 根据传来的Id,去数据库里查找对应的博客，下面的方法也是一样,我就不写注释了
         Query query = new Query(Criteria.where("username").regex(_user.getUserName()));
