@@ -1,7 +1,9 @@
 package com.example.demo.domain;
 
 import java.util.List;
+
 import java.util.ArrayList;
+
 public class SignUp {
     //用户名
     private String userName;
@@ -10,8 +12,11 @@ public class SignUp {
     private String sex;
     private String age;
     private String mail;
+
     private List<String> interest=new ArrayList<String>() ;
     private List<String> interested=new ArrayList<String>();
+
+
 
     public String getUserName() {
         return userName;
@@ -43,7 +48,7 @@ public class SignUp {
         interested.add(username);
     }
     public void removeInterested(String username){
-        interest.remove(username);
+        interested.remove(username);
     }
     public String getMail() {
         return mail;
