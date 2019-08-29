@@ -45,7 +45,7 @@ public class SearchBlog {
     public List<Blog> GetBlogByUser(@RequestBody User _user)
     {
         // 根据传来的Id,去数据库里查找对应的博客，下面的方法也是一样,我就不写注释了
-        Query query = new Query(Criteria.where("username").regex(_user.getUserName()));
+        Query query = new Query(Criteria.where("username").regex(_user.getUserName(),"i"));
         List<Blog> blog = mongoTemplate.find(query,Blog.class);
         if(blog==null){
             return null;
@@ -58,7 +58,7 @@ public class SearchBlog {
     public List<Blog> GetBlogByBlog(@RequestBody Blog blog)
     {
         // 根据传来的Id,去数据库里查找对应的博客，下面的方法也是一样,我就不写注释了
-        Query query = new Query(Criteria.where("title").regex(blog.getTitle()));
+        Query query = new Query(Criteria.where("title").regex(blog.getTitle(),"i"));
         List<Blog> blog1 = mongoTemplate.find(query,Blog.class);
         if(blog1==null){
             return null;

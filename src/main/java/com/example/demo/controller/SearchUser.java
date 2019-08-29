@@ -40,7 +40,7 @@ public class SearchUser {
     @RequestMapping(value = "/getUserInfo", method = RequestMethod.POST)
     public SignUp getmessage2(@RequestBody User _user) {
         //Encryption e2 = new Encryption();
-        Query query = new Query(Criteria.where("userName").regex(_user.getUserName()));
+        Query query = new Query(Criteria.where("userName").regex(_user.getUserName(),"i"));
         SignUp signUp = mongoTemplate.findOne(query, SignUp.class);
         if (signUp == null) {
             return null;

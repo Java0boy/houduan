@@ -1,10 +1,6 @@
 package com.example.demo.domain;
 
-import javax.persistence.Entity;
 
-
-
-@Entity
 public class SignUp {
     //用户名
     private String userName;
@@ -12,6 +8,7 @@ public class SignUp {
     private String password;
     private String sex;
     private String age;
+    private String mail;
 
     public String getUserName() {
         return userName;
@@ -19,6 +16,14 @@ public class SignUp {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getPassword() {

@@ -1,9 +1,9 @@
 package com.example.demo.domain;
 
-import javax.persistence.Entity;
+
 import java.util.Date;
 
-@Entity
+
 public class Blog {
     // TODO: 还有很多属性，比如最新更新时间、所属用户等没有加上
     // 标题

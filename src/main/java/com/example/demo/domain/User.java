@@ -1,10 +1,9 @@
 package com.example.demo.domain;
 
-import javax.persistence.Entity;
 
 
 
-@Entity
+
 public class User {
 
     //用户名
