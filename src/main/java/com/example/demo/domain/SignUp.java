@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
-
+import java.util.List;
+import java.util.ArrayList;
 public class SignUp {
     //用户名
     private String userName;
@@ -9,6 +10,8 @@ public class SignUp {
     private String sex;
     private String age;
     private String mail;
+    private List<String> interest=new ArrayList<String>() ;
+    private List<String> interested=new ArrayList<String>();
 
     public String getUserName() {
         return userName;
@@ -17,7 +20,31 @@ public class SignUp {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+    public List<String> getInterest() {
+        return interest;
+    }
+    public void addInterest(String username){
+        interest.add(username);
+    }
+    public void removeInterest(String username){
+        interest.remove(username);
+    }
+    public void setInterest(List<String> interest) {
+        this.interest = interest;
+    }
+    public List<String> getInterested() {
+        return interested;
+    }
 
+    public void setInterested(List<String> interested) {
+        this.interested = interested;
+    }
+    public void addInterested(String username){
+        interested.add(username);
+    }
+    public void removeInterested(String username){
+        interest.remove(username);
+    }
     public String getMail() {
         return mail;
     }
