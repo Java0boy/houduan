@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.domain.Comment;
+import com.example.demo.domain.Blog;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,14 +26,15 @@ public class CommentController {
             mongoTemplate.save(comment);
             return Boolean.TRUE;
         }
-    @RequestMapping(value = "/getComment", method = RequestMethod.POST)
-    public List<Comment> GetBlog(@RequestBody Comment comment)
-    {
-        String s;
-        Query query = new Query(Criteria.where("blogId").is(comment.getId()));
-        List<Comment> comment1 = mongoTemplate.find(query, Comment.class);
-        Collections.reverse(comment1);
-        return comment1;
-    }
+
+        @RequestMapping(value = "/getComment", method = RequestMethod.POST)
+        public List<Comment> GetComment(@RequestBody Blog blog)
+        {
+            String s;
+            Query query = new Query(Criteria.where("blogId").is(blog.getId()));
+            List<Comment> comment1 = mongoTemplate.find(query, Comment.class);
+            Collections.reverse(comment1);
+            return comment1;
+        }
 }
 
