@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Blog;
+import com.example.demo.domain.SignUp;
 import com.example.demo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -20,6 +21,8 @@ public class BlogController {
     @RequestMapping(value = "/postBlog", method = RequestMethod.POST)
     public Boolean PostBlog(@RequestBody Blog blog)
     {
+       // Query query = new Query(Criteria.where("_id").is(blog.getId()));
+       // mongoTemplate.remove(query, Blog.class);
         mongoTemplate.save(blog);
         return Boolean.TRUE;
        /* System.out.printf(blog.getTitle());
@@ -28,7 +31,6 @@ public class BlogController {
         System.out.printf(blog.getBlogHtml());
         System.out.printf(blog.getBlogMd());
         System.out.printf(blog.getId());*/
-        // TODO: 永久保存此博客至数据库，我认为Id可以作为key
 
     };
 

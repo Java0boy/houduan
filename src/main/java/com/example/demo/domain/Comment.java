@@ -9,6 +9,15 @@ public class Comment {
 
     private String id;
 
+    private Blog blog;
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
+    }
 
     public String getId() {
         return id;
