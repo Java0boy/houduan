@@ -9,14 +9,14 @@ public class Comment {
 
     private String id;
 
-    private Blog blog;
+    private String blogId;
 
-    public Blog getBlog() {
-        return blog;
+    public void setBlogId(String blogId) {
+        this.blogId = blogId;
     }
 
-    public void setBlog(Blog blog) {
-        this.blog = blog;
+    public String getBlogId() {
+        return blogId;
     }
 
     public String getId() {

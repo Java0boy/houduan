@@ -1,10 +1,11 @@
 package com.example.demo.domain;
 
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class Blog {
+public class Blog {//implements Comparable<Blog>{
     // TODO: 还有很多属性，比如最新更新时间、所属用户等没有加上
     // 标题
     private String title;
@@ -17,9 +18,14 @@ public class Blog {
     // html格式的存储，先用string吧（用于显示博文
     private String blogHtml;
     // ID (前端用username+timestamp生成的
-    private String blogid;
 
     private String id;
+
+    private long liulancount=0;
+
+    private long dianzancount=0;
+
+    private List<String> dianzaned= new ArrayList<>();
 
     public String getBlogHtml() {
         return blogHtml;
@@ -45,12 +51,20 @@ public class Blog {
         this.title = title;
     }
 
-    public String getblogId() {
-        return blogid;
+    public long getLiulancount() {
+        return liulancount;
     }
 
-    public void setblogId(String blogid) {
-        this.blogid = blogid;
+    public void setLiulancount(long liulancount) {
+        this.liulancount = liulancount;
+    }
+
+    public long getDianzancount() {
+        return dianzancount;
+    }
+
+    public void setDianzancount(long dianzancount) {
+        this.dianzancount = dianzancount;
     }
 
     public String getId() {
@@ -76,5 +90,23 @@ public class Blog {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public List<String> getDianzaned() {
+        return dianzaned;
+    }
+
+    public void setDianzaned(List<String> dianzaned) {
+        this.dianzaned = dianzaned;
+    }
+    public void addDianzaned(String username){
+        dianzaned.add(username);
+    }
+    public void removeDianzaned(String username){
+        dianzaned.remove(username);
+    }
+    /*@Override
+    public int compareTo(Blog s) {
+        if(this.getDate().)
+    }*/
 
 }

@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.domain.Comment;
+@RestController
+@RequestMapping("/rest")
 public class CommentController {
-    @RestController
-    @RequestMapping("/rest")
-    public class BlogController {
+
         @Autowired
         private MongoTemplate mongoTemplate;
 
@@ -26,6 +26,5 @@ public class CommentController {
         System.out.printf(blog.getId());*/
             // TODO: 永久保存此博客至数据库，我认为Id可以作为key
         }
-    }
 }
 

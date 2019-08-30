@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -12,6 +14,8 @@ import java.io.File;
           */
 
 @Configuration
+@RestController
+@RequestMapping("/rest")
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
             @Override
@@ -20,7 +24,8 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
                 //System.out.println(dir.getAbsolutePath());
                 registry.addResourceHandler("/files/**")
                         .addResourceLocations("file:" + dir.getAbsolutePath() + File.separator);
-
+                registry.addResourceHandler("/rest/files/**")
+                        .addResourceLocations("file:" + dir.getAbsolutePath() + File.separator);
                 super.addResourceHandlers(registry);
             }
 }

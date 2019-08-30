@@ -1,9 +1,7 @@
-﻿package com.example.demo.domain;
+package com.example.demo.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import java.util.ArrayList;
 
 public class SignUp {
     //用户名
@@ -14,14 +12,10 @@ public class SignUp {
     private String age;
     private String mail;
 
-    private List<String> interest=new ArrayList<>() ;
-    private List<String> interested= new ArrayList<>();
-
-
     private List<String> interest=new ArrayList<String>() ;
     private List<String> interested=new ArrayList<String>();
-
-
+    private long guanzhucount;
+    private long guanzhuedcount;
 
 
     public String getUserName() {
@@ -67,6 +61,21 @@ public class SignUp {
     public String getPassword() {
         return password;
     }
+    public long getGuanzhucount() {
+        return guanzhucount;
+    }
+
+    public void setGuanzhucount(long guanzhucount) {
+        this.guanzhucount = guanzhucount;
+    }
+    public long getGuanzhuedcount() {
+        return guanzhuedcount;
+    }
+
+    public void setGuanzhuedcount(long guanzhuedcount) {
+        this.guanzhuedcount = guanzhuedcount;
+    }
+
 
     public void setPassword(String password) {
         this.password = password;
