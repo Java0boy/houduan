@@ -21,17 +21,8 @@ public class BlogController {
     @RequestMapping(value = "/postBlog", method = RequestMethod.POST)
     public Boolean PostBlog(@RequestBody Blog blog)
     {
-       // Query query = new Query(Criteria.where("_id").is(blog.getId()));
-       // mongoTemplate.remove(query, Blog.class);
         mongoTemplate.save(blog);
         return Boolean.TRUE;
-       /* System.out.printf(blog.getTitle());
-        System.out.printf(blog.getUsername());
-        System.out.printf(blog.getDate());
-        System.out.printf(blog.getBlogHtml());
-        System.out.printf(blog.getBlogMd());
-        System.out.printf(blog.getId());*/
-
     };
 
 

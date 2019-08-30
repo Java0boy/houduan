@@ -1,6 +1,6 @@
 package com.example.demo.domain;
 
-public class Comment {
+public class Comment implements Comparable<Comment>{
     private String username;
     // 更新时间
     private String date;
@@ -49,5 +49,12 @@ public class Comment {
 
     public void setcomment(String comment) {
         this.comment= comment;
+    }
+    @Override
+    public int compareTo(Comment comment){
+        if(this.getId().compareTo(comment.getId())>=0)
+            return 1;
+        else
+            return -1;
     }
 }

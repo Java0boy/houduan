@@ -31,6 +31,7 @@ public class SearchBlog {
         return blog;
     }
 
+
     @RequestMapping(value = "/getBlogHtml", method = RequestMethod.POST)
     public String GetBlogHtml(@RequestBody Blog _blog)
     {
