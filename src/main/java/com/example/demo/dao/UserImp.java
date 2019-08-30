@@ -37,15 +37,13 @@ public class UserImp implements UserDao {
         return blog;
     }
     public int updateUser(User user) {
-        Query query = new Query(Criteria.where("userName").is(user.getUserName()));
-        Update update = new Update().set("name",user.getUserName()).set("password",user.getPassword());
-        //更新查询返回的结果集的第一条数据
-       UpdateResult result = mongoTemplate.updateFirst(query,update,User.class);
-       //更新查询到的所有结果集
-        //UpdateResult all_result = mongoTemplate.updateMulti(query,update,User.class);
-        if(result!= null)
-            return (int) result.getModifiedCount();
-        else
+       // Query query = new Query(Criteria.where("userN果集
+        //UpdateResult all_result = mongoTemplate.uame").is(user.getUserName()));
+        //        Update update = new Update().set("name",user.getUserName()).set("password",user.getPassword());
+        //        //更新查询返回的结果集的第一条数据
+        //       UpdateResult result = mongoTemplate.updateFirst(query,update,User.class);
+        //       //更新查询到的所有结pdateMulti(query,update,User.class);
+       ///  else
             return 0;
     }
 }

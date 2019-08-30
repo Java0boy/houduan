@@ -1,7 +1,10 @@
-package com.example.demo.domain;
+﻿package com.example.demo.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import java.util.ArrayList;
+
 public class SignUp {
     //用户名
     private String userName;
@@ -10,8 +13,16 @@ public class SignUp {
     private String sex;
     private String age;
     private String mail;
+
     private List<String> interest=new ArrayList<>() ;
     private List<String> interested= new ArrayList<>();
+
+
+    private List<String> interest=new ArrayList<String>() ;
+    private List<String> interested=new ArrayList<String>();
+
+
+
 
     public String getUserName() {
         return userName;

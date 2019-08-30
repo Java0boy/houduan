@@ -27,12 +27,12 @@ import com.example.demo.domain.Interest;
 public class InterestController {
     @Autowired
     private MongoTemplate mongoTemplate;
-    @RequestMapping(value = "/interest", method = RequestMethod.POST)
-    public Boolean Interest(@RequestBody SignUp signup) {
-        Query query = new Query(Criteria.where("userName").is(signup.getUserName()));
+    @RequestMapping(value = "/chaguanzhu", method = RequestMethod.POST)
+    public Boolean Interest(@RequestBody Interest interest ) {
+        Query query = new Query(Criteria.where("userName").is(interest.getInterest()));
         SignUp signUp = mongoTemplate.findOne(query, SignUp.class);
-        for(int i=0;i<signUp.getInterested().size();i++){
-            if(signUp.getInterested().get(i)==signup.getUserName()){
+        for(int i=0;i<signUp.getInterest().size();i++){
+            if(signUp.getInterest().get(i).equals(interest.getInterested())){
                 return false;
             }
         }
