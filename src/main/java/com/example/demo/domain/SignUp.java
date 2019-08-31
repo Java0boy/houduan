@@ -16,6 +16,7 @@ public class SignUp {
     private List<String> interested=new ArrayList<String>();
     private long guanzhucount;
     private long guanzhuedcount;
+    private List<Resource> resources=new ArrayList<>();
 
 
     public String getUserName() {
@@ -43,6 +44,19 @@ public class SignUp {
 
     public void setInterested(List<String> interested) {
         this.interested = interested;
+    }
+    public List<Resource> getResources() {
+        return resources;
+    }
+
+    public void setResources(List<Resource> resources) {
+        this.resources = resources;
+    }
+    public void addResource(Resource resource){
+        resources.add(resource);
+    }
+    public void removeResource(Resource resource){
+        resources.remove(resource);
     }
     public void addInterested(String username){
         interested.add(username);

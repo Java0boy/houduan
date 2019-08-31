@@ -24,16 +24,6 @@ public class SearchUser {
     private MongoTemplate mongoTemplate;
     @RequestMapping(value = "/getUserMessage", method = RequestMethod.POST)
     public String getmessage(@RequestBody User _user) {
-      /*  System.out.println(_user.getUserName());
-        Encryption e2 = new Encryption();
-        Query query = new Query(Criteria.where("userName").is(_user.getUserName()));
-        SignUp signUp = mongoTemplate.findOne(query, SignUp.class);
-        if (signUp == null) {
-            return null;
-        }
-        else{
-            return signUp;
-        }*/
         return _user.getUserName();
     }
 

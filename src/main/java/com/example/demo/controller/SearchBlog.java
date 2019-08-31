@@ -132,7 +132,6 @@ public class SearchBlog {
     public boolean chadianzan(@RequestBody Dianzan dianzan)
     {
         Query query = new Query(Criteria.where("_id").is(dianzan.getDianzaned()));
-        System.out.println(dianzan.getDianzaned());
         Blog blog = mongoTemplate.findOne(query, Blog.class);
         blog.setLiulancount(blog.getLiulancount()+1);
         Update update=Update.update("liulancount",blog.getLiulancount());

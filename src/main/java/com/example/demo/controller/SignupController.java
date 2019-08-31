@@ -53,12 +53,9 @@ public class SignupController {
             return false;
         }
         else {
-            //Encryption e1 = new Encryption();
+
             mongoTemplate.save(signUp);
-        /*System.out.printf("用户名" + Signupuser.getUserName());
-        System.out.printf("用户密码" + Signupuser.getPassword());
-        System.out.printf("用户性别" + Signupuser.getSex());
-        System.out.printf("用户年龄" + Signupuser.getAge());*/
+
 
             return Boolean.TRUE;
         }

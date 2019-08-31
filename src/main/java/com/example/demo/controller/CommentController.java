@@ -23,7 +23,7 @@ public class CommentController {
 
         @RequestMapping(value = "/postComment", method = RequestMethod.POST)
         public Boolean PostBlog(@RequestBody Comment comment) {
-            //System.out.println(comment.getUsername());
+
             mongoTemplate.save(comment);
             return Boolean.TRUE;
         }

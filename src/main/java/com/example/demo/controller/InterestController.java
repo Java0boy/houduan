@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
-//<<<<<<< HEAD
-//=======
+
 
 import com.example.demo.domain.Interest;
 import com.example.demo.domain.SignUp;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-//>>>>>>> fc137d305823a94c100f9411807a8bbdab21aa60
+
 
 @RestController
 @RequestMapping("/rest")
