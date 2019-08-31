@@ -15,7 +15,7 @@ import java.util.Objects;
 
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping(value = "/rest", produces = "application/json;charset=utf-8")
 public class UploadController {
     // 更改路径
     private String UPLOAD_FOLDER = "fileStorage";

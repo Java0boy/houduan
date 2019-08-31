@@ -18,7 +18,7 @@ import com.example.demo.domain.SignUp;
 import java.util.Random;
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping(value = "/rest", produces = "application/json;charset=utf-8")
 public class SignupController {
     @Autowired
     private MongoTemplate mongoTemplate;

@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping(value = "/rest", produces = "application/json;charset=utf-8")
 public class CommentController {
 
         @Autowired

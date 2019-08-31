@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 import java.util.List;
 @RestController
-@RequestMapping("/rest")
+@RequestMapping(value = "/rest", produces = "application/json;charset=utf-8")
 public class ResourceController {
     @Autowired
     private MongoTemplate mongoTemplate;

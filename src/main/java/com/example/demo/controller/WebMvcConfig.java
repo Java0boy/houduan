@@ -15,7 +15,7 @@ import java.io.File;
 
 @Configuration
 @RestController
-@RequestMapping("/rest")
+@RequestMapping(value = "/rest", produces = "application/json;charset=utf-8")
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
             @Override
