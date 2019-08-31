@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Blog;
+import com.example.demo.domain.SignUp;
 import com.example.demo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.domain.Dianzan;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -143,4 +145,20 @@ public class SearchBlog {
         }
         return true;
     }
+    @RequestMapping(value = "/getallBlog", method = RequestMethod.POST)
+    public List<Blog> GetAllBlog()
+    {
+        long time = System.currentTimeMillis()-259200L;//和当前时间相差三天
+        Query query = new Query(Criteria.where("timestamp").gte(time));
+        List<Blog> blogs=mongoTemplate.find(query,Blog.class);
+        for(int i=0;i<blogs.size();i++){
+            for(int j=i+1;j<blogs.size();j++){
+                if(blogs.get(i).getDianzancount()*0.9+blogs.get(i).getLiulancount()*0.1<blogs.get(j).getDianzancount()*0.9+blogs.get(j).getLiulancount()*0.1){
+                    Collections.swap(blogs,i,j);
+                }
+            }
+        }
+        return blogs;
+    }
+
 }

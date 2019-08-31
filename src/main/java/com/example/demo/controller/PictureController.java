@@ -25,8 +25,6 @@ public class PictureController {
     @RequestMapping(value = "/uploadPicture", method = RequestMethod.POST)
     public Boolean UploadPic(@RequestBody Resource resource)
     {
-        System.out.println("p");
-        System.out.println("receive: " + resource.getUrl());
         Query query = new Query(Criteria.where("userName").is(resource.getUsername()));
         SignUp signUp=mongoTemplate.findOne(query,SignUp.class);
         signUp.setUrl(resource.getUrl());
@@ -37,11 +35,8 @@ public class PictureController {
     @RequestMapping(value = "/getPicture", method = RequestMethod.POST)
     public String getPicture(@RequestBody User user)
     {
-        System.out.println("get");
-        System.out.println(user.getUserName());
         Query query = new Query(Criteria.where("userName").is(user.getUserName()));
         SignUp signUp=mongoTemplate.findOne(query,SignUp.class);
-        System.out.println("give:" + signUp.getUrl());
         return signUp.getUrl();
     }
 }
