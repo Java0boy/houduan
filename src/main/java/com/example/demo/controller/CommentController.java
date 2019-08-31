@@ -23,6 +23,7 @@ public class CommentController {
 
         @RequestMapping(value = "/postComment", method = RequestMethod.POST)
         public Boolean PostBlog(@RequestBody Comment comment) {
+            //System.out.println(comment.getUsername());
             mongoTemplate.save(comment);
             return Boolean.TRUE;
         }
@@ -30,10 +31,9 @@ public class CommentController {
         @RequestMapping(value = "/getComment", method = RequestMethod.POST)
         public List<Comment> GetComment(@RequestBody Blog blog)
         {
-            String s;
             Query query = new Query(Criteria.where("blogId").is(blog.getId()));
             List<Comment> comment1 = mongoTemplate.find(query, Comment.class);
-            Collections.reverse(comment1);
+            Collections.sort(comment1);
             return comment1;
         }
 }

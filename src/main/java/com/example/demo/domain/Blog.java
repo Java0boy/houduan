@@ -117,9 +117,9 @@ public class Blog implements Comparable<Blog>{
     @Override
     public int compareTo(Blog blog){
         if(this.getTimestamp().compareTo(blog.getTimestamp())>=0)
-            return 1;
-        else
             return -1;
+        else
+            return 1;
     }
 
 }

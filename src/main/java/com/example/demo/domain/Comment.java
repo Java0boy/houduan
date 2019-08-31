@@ -53,8 +53,8 @@ public class Comment implements Comparable<Comment>{
     @Override
     public int compareTo(Comment comment){
         if(this.getId().compareTo(comment.getId())>=0)
-            return 1;
-        else
             return -1;
+        else
+            return 1;
     }
 }

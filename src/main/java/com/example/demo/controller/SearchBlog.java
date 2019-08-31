@@ -64,7 +64,7 @@ public class SearchBlog {
         // 根据传来的Id,去数据库里查找对应的博客，下面的方法也是一样,我就不写注释了
         Query query = new Query(Criteria.where("title").regex(blog.getTitle(),"i"));
         List<Blog> blog1 = mongoTemplate.find(query, Blog.class);
-        Collections.reverse(blog1);
+        Collections.sort(blog1);
         if(blog1==null){
             return null;
         }
