@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.domain.Dianzan;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -48,7 +49,7 @@ public class SearchBlog {
     public List<Blog> GetBlogByUser(@RequestBody User _user)
     {
         // 根据传来的Id,去数据库里查找对应的博客，下面的方法也是一样,我就不写注释了
-        Query query = new Query(Criteria.where("username").regex(_user.getUserName(),"i"));
+        Query query = new Query(Criteria.where("username").is(_user.getUserName()));
         List<Blog> blog = mongoTemplate.find(query, Blog.class);
         if(blog==null){
             return null;
@@ -63,6 +64,7 @@ public class SearchBlog {
         // 根据传来的Id,去数据库里查找对应的博客，下面的方法也是一样,我就不写注释了
         Query query = new Query(Criteria.where("title").regex(blog.getTitle(),"i"));
         List<Blog> blog1 = mongoTemplate.find(query, Blog.class);
+        Collections.reverse(blog1);
         if(blog1==null){
             return null;
         }
@@ -130,6 +132,7 @@ public class SearchBlog {
     public boolean chadianzan(@RequestBody Dianzan dianzan)
     {
         Query query = new Query(Criteria.where("_id").is(dianzan.getDianzaned()));
+        System.out.println(dianzan.getDianzaned());
         Blog blog = mongoTemplate.findOne(query, Blog.class);
         blog.setLiulancount(blog.getLiulancount()+1);
         Update update=Update.update("liulancount",blog.getLiulancount());

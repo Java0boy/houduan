@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Blog {//implements Comparable<Blog>{
+public class Blog implements Comparable<Blog>{
     // TODO: 还有很多属性，比如最新更新时间、所属用户等没有加上
     // 标题
     private String title;
@@ -20,6 +20,8 @@ public class Blog {//implements Comparable<Blog>{
     // ID (前端用username+timestamp生成的
 
     private String id;
+
+    private String timestamp;
 
     private long liulancount=0;
 
@@ -71,6 +73,14 @@ public class Blog {//implements Comparable<Blog>{
         return id;
     }
 
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -104,9 +114,12 @@ public class Blog {//implements Comparable<Blog>{
     public void removeDianzaned(String username){
         dianzaned.remove(username);
     }
-    /*@Override
-    public int compareTo(Blog s) {
-        if(this.getDate().)
-    }*/
+    @Override
+    public int compareTo(Blog blog){
+        if(this.getTimestamp().compareTo(blog.getTimestamp())>=0)
+            return 1;
+        else
+            return -1;
+    }
 
 }
