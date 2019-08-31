@@ -22,9 +22,13 @@ public class UploadController {
 
     @RequestMapping(value = "/singlefile", method = RequestMethod.POST)
     public Object singleFileUpload(MultipartFile file) {
+        Map<String,Object> resultMap = new HashMap<String,Object>();
         if (Objects.isNull(file) || file.isEmpty()) {
             System.out.println("文件为空");
-            return "文件为空，请重新上传";
+            resultMap.put("success", 0);
+            resultMap.put("message", "文件为空！");
+            resultMap.put("url","");
+            return resultMap;
         }
 
         try {
@@ -37,10 +41,16 @@ public class UploadController {
             //文件写入指定路径
             Files.write(path, bytes);
             System.out.println("文件写入成功...路径："+ path);
-            return "文件上传成功";
+            resultMap.put("success", 1);
+            resultMap.put("message", "上传成功！");
+            resultMap.put("url","rest/files/" + file.getOriginalFilename());
+            return resultMap;
         } catch (IOException e) {
             e.printStackTrace();
-            return "后端异常...";
+            resultMap.put("success", 0);
+            resultMap.put("message", "后端异常！");
+            resultMap.put("url","");
+            return resultMap;
         }
     }
 
@@ -67,7 +77,6 @@ public class UploadController {
             System.out.println("文件写入成功...路径："+ path);
             resultMap.put("success", 1);
             resultMap.put("message", "上传成功！");
-            // TODO: 这个地方，部署的时候也要改ip
             resultMap.put("url","rest/files/" + file.getOriginalFilename());
             return resultMap;
 
