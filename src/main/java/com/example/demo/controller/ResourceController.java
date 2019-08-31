@@ -34,6 +34,7 @@ public class ResourceController {
     @RequestMapping(value = "/getResource", method = RequestMethod.POST)
     public List<Resource> getResource(@RequestBody User user)
     {
+        System.out.println("user: " + user.getUserName());
         Query query = new Query(Criteria.where("userName").is(user.getUserName()));
         SignUp signUp=mongoTemplate.findOne(query,SignUp.class);
         List<Resource> resources=signUp.getResources();

@@ -148,7 +148,9 @@ public class SearchBlog {
     @RequestMapping(value = "/getallBlog", method = RequestMethod.POST)
     public List<Blog> GetAllBlog()
     {
-        long time = System.currentTimeMillis()-259200L;//和当前时间相差三天
+        System.out.println("here");
+        long time1 = System.currentTimeMillis()-259200000L;//和当前时间相差三天
+        String time=String.valueOf(time1);
         Query query = new Query(Criteria.where("timestamp").gte(time));
         List<Blog> blogs=mongoTemplate.find(query,Blog.class);
         for(int i=0;i<blogs.size();i++){

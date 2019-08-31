@@ -9,7 +9,7 @@ public class Resource implements Comparable<Resource>{
         return resourcename;
     }
 
-    public void setTimestamp(String resourcename) {
+    public void setTimestamp(String timestamp) {
         this.timestamp= timestamp;
     }
 
