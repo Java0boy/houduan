@@ -16,6 +16,7 @@ public class SignUp {
     private List<String> interested=new ArrayList<String>();
     private long guanzhucount;
     private long guanzhuedcount;
+    private String url;
     private List<Resource> resources=new ArrayList<>();
 
 
@@ -93,6 +94,14 @@ public class SignUp {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getAge() {

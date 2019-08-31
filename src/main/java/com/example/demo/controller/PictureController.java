@@ -15,27 +15,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Collections;
 import java.util.List;
 
-public class ResourceController {
+public class PictureController {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/uploadpicture", method = RequestMethod.POST)
     public Boolean PostBlog(@RequestBody Resource resource)
     {
         Query query = new Query(Criteria.where("userName").is(resource.getUsername()));
         SignUp signUp=mongoTemplate.findOne(query,SignUp.class);
-        signUp.addResource(resource);
-        Update update=Update.update("resources",signUp.getResources());
+        signUp.setUrl(resource.getUrl());
+        Update update=Update.update("resources",signUp.getUrl());
         mongoTemplate.updateFirst(query,update,SignUp.class);
         return Boolean.TRUE;
     }
-    @RequestMapping(value = "/getResource", method = RequestMethod.POST)
-    public List<Resource> getResource(@RequestBody User user)
+    @RequestMapping(value = "/getPicture", method = RequestMethod.POST)
+    public String getPicture(@RequestBody User user)
     {
         Query query = new Query(Criteria.where("userName").is(user.getUserName()));
         SignUp signUp=mongoTemplate.findOne(query,SignUp.class);
-        List<Resource> resources=signUp.getResources();
-        Collections.sort(resources);
-        return resources;
+        return signUp.getUrl();
     }
 }
